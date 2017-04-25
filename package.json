@@ -1,0 +1,23 @@
+{
+  "name": "mission01",
+  "version": "1.0.0",
+  "description": "kedo_mission_01",
+  "main": "index.js",
+  "dependencies": {
+    "express": "^4.15.2"
+  },
+  "devDependencies": {},
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/lurend479/Kedo_mission_01.git"
+  },
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/lurend479/Kedo_mission_01/issues"
+  },
+  "homepage": "https://github.com/lurend479/Kedo_mission_01#readme"
+}
