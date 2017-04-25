@@ -4,7 +4,10 @@
   "description": "kedo_mission_01",
   "main": "index.js",
   "dependencies": {
-    "express": "^4.15.2"
+    "async": "^2.3.0",
+    "cheerio": "^0.22.0",
+    "express": "^4.15.2",
+    "request": "^2.81.0"
   },
   "devDependencies": {},
   "scripts": {
