@@ -2,11 +2,12 @@
   "name": "mission01",
   "version": "1.0.0",
   "description": "kedo_mission_01",
-  "main": "index.js",
+  "main": "index_2.js",
   "dependencies": {
     "async": "^2.3.0",
     "cheerio": "^0.22.0",
     "express": "^4.15.2",
+    "jade": "^1.11.0",
     "nodemon": "^1.11.0",
     "request": "^2.81.0"
   },

@@ -1,3 +1,10 @@
 html
     head
+        script(type='text/javascript', src='https://ajax.googleapis.com/ajax/libs/jquery/1.6.2/jquery.min.js')
     body
+        div
+            - for(var index = 0 ; index < test3.length; ++index){
+                - for(var index_1 = 0 ; index_1 < test3[index].newsTitle.length; ++index_1){
+                    li= test3[index].newsTitle[index_1]
+                - }    
+            - }
