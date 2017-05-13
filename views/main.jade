@@ -3,8 +3,11 @@ html
         script(type='text/javascript', src='https://ajax.googleapis.com/ajax/libs/jquery/1.6.2/jquery.min.js')
     body
         div
-            - for(var index = 0 ; index < test3.length; ++index){
-                - for(var index_1 = 0 ; index_1 < test3[index].newsTitle.length; ++index_1){
-                    li= test3[index].newsTitle[index_1]
+            - for(var index = 0 ; index < newsData.length; ++index){
+                    h1 #{newsData[index].title}
+                - for(var index_1 = 0 ; index_1 < newsData[index].newsTitle.length; ++index_1){
+                    - if(index_1 < 5)
+                        li 
+                            a(href=newsData[index].newsTitleHerf[index_1]) #{newsData[index].newsTitle[index_1]}
                 - }    
             - }

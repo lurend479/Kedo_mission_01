@@ -8,15 +8,17 @@ var newsFindkey = [
     plusurl : 'http://www.hani.co.kr/',
     title : '한겨레',
     load : false,
-    newsTitle : []
+    newsTitle : [],
+    newsTitleHerf : []
   },
   {
     url : 'http://newstapa.org/',
-    findkey : '.item',
+    findkey : '.item-head',
     plusurl : '',
     title : '뉴스타파',
     load : false,
-    newsTitle : []
+    newsTitle : [],
+    newsTitleHerf : []
   }
 ];
 var g_res = null;
@@ -28,14 +30,18 @@ exports.main = function(req,res){
     titleText = [];
     titleHerf = [];
     g_res = res;
+    for(var index = 0 ; index < newsFindkey.length ; ++index)
+    {
+        newsFindkey[index].load = false;
+    }
     loadNewsTitle();
 }
 
 function loadNewsTitle(){
     var loadNews = function(findNewsIndex){
             request(newsFindkey[findNewsIndex].url, function(error, response, body){
-                var titleList = GetTitleHref(cheerio.load(body), newsFindkey[findNewsIndex].findkey, newsFindkey[findNewsIndex].plusurl);
-                loadEnd(findNewsIndex, titleList);
+                GetTitleHref(cheerio.load(body), newsFindkey[findNewsIndex]);
+                loadEnd(findNewsIndex);
             })
     };
 
@@ -45,9 +51,9 @@ function loadNewsTitle(){
     }
 }
 
-function loadEnd(index, titleList){
+function loadEnd(index){
     newsFindkey[index].load = true;
-    newsFindkey[index].newsTitle = titleList;
+    
 
     var allLoad = true;
     for(var index = 0 ; index < newsFindkey.length ; ++index)
@@ -61,22 +67,22 @@ function loadEnd(index, titleList){
 
     if(allLoad)
     {
-        g_res.render('main', {test3: newsFindkey});
+        g_res.render('main', {newsData: newsFindkey});
     }
 }
 
-function GetTitleHref(loadData, findKey, plusURL)
+function GetTitleHref(loadData, findData)
 {
     var titleList = [];
-    var postElements = loadData(findKey);
+    var titleHrefList = [];
+    var postElements = loadData(findData.findkey);
       postElements.each(function() {
         var postTitle = loadData(this).find("a").text();
         var postHref = loadData(this).find("a").attr("href");
 
         titleList.push(postTitle);    
-        // titleText.push(postTitle);
-        // titleHerf.push(plusURL + postHref);
+        titleHrefList.push(findData.plusurl + postHref);
     });
-
-    return titleList;
+    findData.newsTitle = titleList;
+    findData.newsTitleHerf = titleHrefList;
 }

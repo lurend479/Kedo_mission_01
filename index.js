@@ -12,7 +12,7 @@ var newsFindkey = [
   },
   {
     url : 'http://newstapa.org/',
-    findkey : '.item',
+    findkey : '.item-head',
     plusurl : '',
     title : '뉴스타파'
   }
