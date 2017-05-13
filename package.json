@@ -13,7 +13,7 @@
   },
   "devDependencies": {},
   "scripts": {
-    "start":"node index_2.js",
+    "start": "node index_2.js",
     "test": "echo \"Error: no test specified\" && exit 1"
   },
   "repository": {
