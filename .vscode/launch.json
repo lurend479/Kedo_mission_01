@@ -8,7 +8,7 @@
             "type": "node",
             "request": "launch",
             "name": "프로그램 시작",
-            "program": "${workspaceRoot}\\index_2.js",
+            "program": "${workspaceRoot}\\index.js",
             "cwd": "${workspaceRoot}"
         },
         {

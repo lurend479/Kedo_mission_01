@@ -2,7 +2,7 @@
   "name": "mission01",
   "version": "1.0.0",
   "description": "kedo_mission_01",
-  "main": "index_2.js",
+  "main": "index.js",
   "dependencies": {
     "async": "^2.3.0",
     "cheerio": "^0.22.0",

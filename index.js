@@ -1,93 +1,40 @@
 var express = require('express');
-var request = require("request");  
-var cheerio = require("cheerio");
-var async = require("async");
+var http = require('http');
 
-var newsFindkey = [
-  {
-    url : 'http://www.hani.co.kr/',
-    findkey : '.article-title',
-    plusurl : 'http://www.hani.co.kr/',
-    title : '한겨레'
-  },
-  {
-    url : 'http://newstapa.org/',
-    findkey : '.item-head',
-    plusurl : '',
-    title : '뉴스타파'
-  }
-];
 
+// routes라는 폴더에 있는 js 파일을 가져 온다??
+// 170430 공부 필요
+var routes = require('./routes/main.js');
+
+// express 생성
 var app = express();
+
+// 옵션 설정
+// 참고 http://sukth09.tistory.com/32
+// process란 객체내에 있는 env의 객체에 설정되어 있는 포트번호를 가져옴
+//  임시로 설정한 포트 임
+// 또한 3000번 포트로 설정
+app.set('port', process.env.PORT || 3000);
+
+// 뷰 디렉토리 설정
+app.set('views',"./views");
+
+// 뷰 엔진 설정 jade(pug), ejs가 있다.
+app.set('view engine', 'jade');
+
+// 정작파일 디렉토리 설정
+// css나 이미지 파일등을 저장하는곳 설정
 app.use(express.static('public'));
+
+// 라우터의 개념으로 루트로 들어 왔을때 응답하는 객체
+// exports객체를 이용 다른 객체에 있는 함수를 가져 올 수 있음
+// exports로 함수를 만들고 require로 추출(?)해서 사용 가능함
+app.get('/', routes.main);
+
+// 웹사이트에서 볼때 소스를 이쁘게 나오게
 app.locals.pretty = true;  
 
-var titleText = [];
-var titleHerf = [];
-var loadComplete = 0;
 
-app.get('/', function(req, res){
-
-  loadComplete = 0;
-  var tasks = [];
-  var functionTEST = function(callback){
-        titleText.push(newsFindkey[loadComplete].title);
-        titleHerf.push(newsFindkey[loadComplete].url);
-        titleText.push('');
-        titleHerf.push('');
-        request(newsFindkey[loadComplete].url, function(error, response, body){
-          var returnValue = GetTitleHref(cheerio.load(body), newsFindkey[loadComplete].findkey, newsFindkey[loadComplete].plusurl);
-          
-          loadComplete++;
-          callback(null);
-        })
-  };
-        
-  for(var index = 0 ; index < newsFindkey.length ; ++index)
-  {
-    tasks.push(functionTEST);
-  }
-
-  async.waterfall(tasks, function (err) {
-      if (err)
-          console.log('err');
-      else
-          console.log('done');
-
-      var lis = '';
-      for(var i=0; i< titleText.length; i++){
-        lis = lis + '<li>'+ '<a href=' + titleHerf[i] + '>' + titleText[i] + '</li>';
-      }
-
-      var output = `
-        <!DOCTYPE html>
-        <html>
-          <head>
-            <meta charset="utf-8">
-            <title></title>
-          </head>
-          <body>
-              Hello, Dynamic!
-              <ul>
-                ${lis}
-              </ul>
-          </body>
-        </html>`;
-        res.send(output);
-  });
-});
-
-function GetTitleHref(loadData, findKey, plusURL)
-{
-    var postElements = loadData(findKey);
-      postElements.each(function() {
-        var postTitle = loadData(this).find("a").text();
-        var postHref = loadData(this).find("a").attr("href");
-          
-        titleText.push(postTitle);
-        titleHerf.push(plusURL + postHref);
-    });
-
-    return true;
-}
-
+http.createServer(app).listen(app.get('port'), function(){
+    console.log("start server port : " + app.get('port'));
+})

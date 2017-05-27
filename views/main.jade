@@ -1,13 +1,33 @@
 html
     head
-        script(type='text/javascript', src='https://ajax.googleapis.com/ajax/libs/jquery/1.6.2/jquery.min.js')
+        link(href='/css/newsBox.css', rel='stylesheet')
     body
-        div
-            - for(var index = 0 ; index < newsData.length; ++index){
-                    h1 #{newsData[index].title}
-                - for(var index_1 = 0 ; index_1 < newsData[index].newsTitle.length; ++index_1){
-                    - if(index_1 < 5)
-                        li 
-                            a(href=newsData[index].newsTitleHerf[index_1]) #{newsData[index].newsTitle[index_1]}
-                - }    
-            - }
+        div.all_news_box
+            div.news_box
+                - var rows = newsDatas;//['0', '1', '2', '3', '4', '5', '6', '7', '8'];
+                - var columns = ['0', '1', '2', '3', '4', '5', '6', '7', '8'];
+                - var test = ['0', '1', '2', '3'];
+
+                - var NewsDatas = newsDatas;
+                
+                //- each NewsData in NewsDatas
+                //-     table
+                //-         tbody
+                //-             each NewsTitle in NewsData.NewsTitles
+                //-                 tr
+                //-                     td
+                //-                         a(href=NewsTitle.NewsTitleHerf) #{NewsTitle.NewsTitle}
+
+                - for(var index = 0 ; index < newsDatas.length; ++index){
+                    table
+                        tbody
+                            tr
+                                td #{newsDatas[index].NewsName}
+                            - for(var index_1 = 0 ; index_1 < newsDatas[index].NewsTitles.length; ++index_1){
+                                - if(index_1 < 5){
+                                    tr
+                                        td
+                                            a(href=newsDatas[index].NewsTitles[index_1].NewsTitleHerf) #{newsDatas[index].NewsTitles[index_1].NewsTitle}
+                                - }    
+                            - }    
+                - }
