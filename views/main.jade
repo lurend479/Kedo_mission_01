@@ -1,25 +1,12 @@
-html
+html(lang="ko")
     head
+        meta(charset="utf-8")
         link(href='/css/newsBox.css', rel='stylesheet')
     body
         div.all_news_box
             div.news_box
-                - var rows = newsDatas;//['0', '1', '2', '3', '4', '5', '6', '7', '8'];
-                - var columns = ['0', '1', '2', '3', '4', '5', '6', '7', '8'];
-                - var test = ['0', '1', '2', '3'];
-
-                - var NewsDatas = newsDatas;
-                
-                //- each NewsData in NewsDatas
-                //-     table
-                //-         tbody
-                //-             each NewsTitle in NewsData.NewsTitles
-                //-                 tr
-                //-                     td
-                //-                         a(href=NewsTitle.NewsTitleHerf) #{NewsTitle.NewsTitle}
-
                 - for(var index = 0 ; index < newsDatas.length; ++index){
-                    table
+                    table(border=1)
                         tbody
                             tr
                                 td #{newsDatas[index].NewsName}
