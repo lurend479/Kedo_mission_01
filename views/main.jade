@@ -9,7 +9,9 @@ html(lang="ko")
                     table(border=1)
                         tbody
                             tr
-                                th #{newsDatas[index].NewsName}
+                                th 
+                                    img(src= #{newsDatas[index].NewsIconSrc})
+                                        a(href=newsDatas[index].NewsTitles[index_1].NewsBaseHerf)
                             - for(var index_1 = 0 ; index_1 < newsDatas[index].NewsTitles.length; ++index_1){
                                 - if(index_1 < 5){
                                     tr
