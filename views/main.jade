@@ -8,8 +8,8 @@ html(lang="ko")
                 - for(var index = 0 ; index < newsDatas.length; ++index){
                     table(border=1)
                         tbody
-                            th
-                                td #{newsDatas[index].NewsName}
+                            tr
+                                th #{newsDatas[index].NewsName}
                             - for(var index_1 = 0 ; index_1 < newsDatas[index].NewsTitles.length; ++index_1){
                                 - if(index_1 < 5){
                                     tr
