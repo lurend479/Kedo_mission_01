@@ -1,11 +1,12 @@
-p {
-    overflow: hidden;
-    text-overflow: ellipsis;
-    white-space: nowrap;
-}
-
 table {
+    width: 330px;
     float: left;
+    table-layout:fixed;
+}
+td {
+  overflow: hidden;
+  white-space: nowrap; 
+  text-overflow: ellipsis;
 }
 
 .all_news_box {
