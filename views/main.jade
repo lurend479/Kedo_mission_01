@@ -10,13 +10,13 @@ html(lang="ko")
                         tbody
                             tr
                                 th 
-                                    img(src=newsDatas[index].NewsIconSrc)
-                                        a(href=newsDatas[index].NewsTitles[index_1].NewsBaseHerf)
-                            - for(var index_1 = 0 ; index_1 < newsDatas[index].NewsTitles.length; ++index_1){
-                                - if(index_1 < 5){
-                                    tr
-                                        td
-                                            a(href=newsDatas[index].NewsTitles[index_1].NewsTitleHerf) #{newsDatas[index].NewsTitles[index_1].NewsTitle}
+                                    a(href=newsDatas[index].NewsBaseHerf)
+                                        img(src=newsDatas[index].NewsIconSrc)   
+                                - for(var index_1 = 0 ; index_1 < newsDatas[index].NewsTitles.length; ++index_1){
+                                    - if(index_1 < 5){
+                                        tr
+                                            td
+                                                a(href=newsDatas[index].NewsTitles[index_1].NewsTitleHerf) #{newsDatas[index].NewsTitles[index_1].NewsTitle}
+                                    - }    
                                 - }    
-                            - }    
                 - }
