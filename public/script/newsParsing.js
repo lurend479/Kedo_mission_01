@@ -149,6 +149,8 @@ function NewsDataClear(){
 function NewsDataParsing(){
     var parsingFunc = function (data){
             request(data.NewsBaseHerf, function(error, response, body){
+                if(isEmpty(data))
+                    return;
                 data.NewsDataParsing(cheerio.load(body));
                 NewsDataParsingComplateCheck();
             })
