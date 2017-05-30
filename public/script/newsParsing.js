@@ -9,12 +9,12 @@ var NewsTitleData = function(title, herf){
     this.NewsTitleHerf = herf;
 }
 
-var NewsData = function(name, baseHerf, findKey)
+var NewsData = function(name, baseHerf, findKey, iconSrc)
 {
     this.NewsName = name;
     this.NewsBaseHerf = baseHerf;
     this.NewsTitles = new Array();
-    this.NewsIconSrc;
+    this.NewsIconSrc = iconSrc;
     this.ParsingComplete = false;
     this.FindKey = findKey;
 }
@@ -126,13 +126,13 @@ NewsData.prototype.NewsDataParsing = function(loadData){
 }
 
 var NewsDatas = new Array(
-    new NewsData("한겨례","http://www.hani.co.kr/", ".article-title"),
-    new NewsData("뉴스타파","http://newstapa.org/",".item-head"),
-    new NewsData("조선일보","http://www.chosun.com/",".art_list_item"),
-    new NewsData("동아일보","http://www.donga.com/",".txt_li"),
-    new NewsData("미디어오늘","http://www.mediatoday.co.kr/news/articleList.html",".list_title_a"),
-    new NewsData("YTN","http://www.ytn.co.kr/",".type2"),
-    new NewsData("헤럴드경제","http://biz.heraldcorp.com/",".ellipsis")
+    new NewsData("한겨례","http://www.hani.co.kr/", ".article-title","http://img.hani.co.kr/section-image/15/hani/images/common/logo_hani.png"),
+    new NewsData("뉴스타파","http://newstapa.org/",".item-head","http://img.hani.co.kr/section-image/15/hani/images/common/logo_hani.png"),
+    new NewsData("조선일보","http://www.chosun.com/",".art_list_item","http://img.hani.co.kr/section-image/15/hani/images/common/logo_hani.png"),
+    new NewsData("동아일보","http://www.donga.com/",".txt_li","http://img.hani.co.kr/section-image/15/hani/images/common/logo_hani.png"),
+    new NewsData("미디어오늘","http://www.mediatoday.co.kr/news/articleList.html",".list_title_a","http://img.hani.co.kr/section-image/15/hani/images/common/logo_hani.png"),
+    new NewsData("YTN","http://www.ytn.co.kr/",".type2","http://img.hani.co.kr/section-image/15/hani/images/common/logo_hani.png"),
+    new NewsData("헤럴드경제","http://biz.heraldcorp.com/",".ellipsis","http://img.hani.co.kr/section-image/15/hani/images/common/logo_hani.png")
     //new NewsData("지디넷","http://www.zdnet.co.kr/news/news_list.asp?zdknum=0000&lo=z3",".article_li_1"),
     //new NewsData("오마이뉴스","http://www.ohmynews.com/NWS_Web/ArticlePage/Total_Article.aspx",".list_type1")
     
