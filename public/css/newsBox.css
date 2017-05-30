@@ -2,21 +2,36 @@ table {
     width: 330px;
     float: left;
     table-layout:fixed;
+    margin: 5px;
+}
+img {
+    width: auto; height: auto;
+    max-width: 300px;
+    max-height: 50px;
+}
+th {
+    height: 70px;
+    border-bottom: 1px solid gray;
 }
 td {
+    height: 50px;
   overflow: hidden;
   white-space: nowrap; 
   text-overflow: ellipsis;
+  border-bottom: 1px solid gray;
+}
+
+a{
+    text-decoration: none;
+    color: black;
 }
 
 .all_news_box {
-    border: 1px solid;
     width: 100%;
     text-align: center;
 }
 
 .news_box {
-    border: 1px solid;
-    width: 1000px;
+    width: 1020px;
     display: inline-block;
 }

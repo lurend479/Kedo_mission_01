@@ -2,21 +2,23 @@ html(lang="ko")
     head
         meta(charset="utf-8")
         link(href='/css/newsBox.css', rel='stylesheet')
+        title 뉴스가 보고싶으면 뉴스고!
     body
         div.all_news_box
+            h1(style="font-size:3em") New's GO!
             div.news_box
                 - for(var index = 0 ; index < newsDatas.length; ++index){
-                    table(border=1)
+                    table
                         tbody
                             tr
                                 th 
-                                    a(href=newsDatas[index].NewsBaseHerf)
+                                    a(href=newsDatas[index].NewsBaseHerf target="_blank")
                                         img(src=newsDatas[index].NewsIconSrc)   
                                 - for(var index_1 = 0 ; index_1 < newsDatas[index].NewsTitles.length; ++index_1){
                                     - if(index_1 < 5){
                                         tr
                                             td
-                                                a(href=newsDatas[index].NewsTitles[index_1].NewsTitleHerf) #{newsDatas[index].NewsTitles[index_1].NewsTitle}
+                                                a(href=newsDatas[index].NewsTitles[index_1].NewsTitleHerf target="_blank") #{newsDatas[index].NewsTitles[index_1].NewsTitle}
                                     - }    
                                 - }    
                 - }
